@@ -89,19 +89,22 @@ def set_theme(mode):
         .markdown-text-container, .stMarkdown {
             color: #fff !important;
         }
+        /* DARK MODE: Inputs, Textareas, Selects, Popovers, Listboxes */
+        input, textarea, select,
+        .stTextInput input, .stTextArea textarea,
         [data-baseweb="select"], [data-baseweb="select"] *,
-        div[role="listbox"], div[role="option"], li[role="option"],
-        div[role="listbox"] *,
-        [data-baseweb="popover"], [data-baseweb="popover"] * {
+        [data-baseweb="popover"], [data-baseweb="popover"] *,
+        div[role="listbox"], div[role="option"], li[role="option"], div[role="listbox"] * {
             background: #2d2f36 !important;
             color: #fff !important;
+            caret-color: #fff !important;
+            border-color: #444654 !important;
         }
-        .stMultiSelect input::placeholder, .stSelectbox input::placeholder {
+
+        .stMultiSelect input::placeholder, .stSelectbox input::placeholder,
+        input::placeholder, textarea::placeholder {
             color: #bbb !important;
             opacity: 1 !important;
-        }
-        .stMultiSelect span, .stSelectbox span {
-            color: #fff !important;
         }
         /* FINAL: Force selected chips/tags to orange with white text, most specific */
         .stMultiSelect [data-baseweb="tag"], .stSelectbox [data-baseweb="tag"],
