@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import streamlit as st
 from PIL import Image
 import time
@@ -61,7 +60,7 @@ def set_theme(mode):
             background: #393b41 !important;
             color: #fff !important;
         }
-       
+        
         html, body, [data-testid="stAppViewContainer"], [data-testid="stAppViewBlockContainer"], .main, .block-container {
             background: #2d2f36 !important;
             color: #fff !important;
@@ -147,9 +146,26 @@ def set_theme(mode):
             background: #ff4b4b !important;
             color: #fff !important;
         }
+         /* Force dark sidebar in dark mode */
+        [data-testid="stSidebar"], .css-1d391kg {
+            background: #2d2f36 !important;
+            color: #fff !important;
+        }
+        /* --- ADD THIS BLOCK BELOW --- */
+        header[data-testid="stHeader"] {
+            background: #2d2f36 !important;
+            color: #fff !important;
+        }
+        header[data-testid="stHeader"] * {
+            color: #fff !important;
+        }
+        header[data-testid="stHeader"] svg {
+            color: #fff !important;
+            fill: #fff !important;
+            stroke: #fff !important;
+        }
         </style>
         """, unsafe_allow_html=True)
-
 # PAGE CONFIG
 st.set_page_config(
     page_title="Mental Health Assistant",
@@ -467,11 +483,14 @@ elif agent_mode == "Listener (Vent & Comfort)":
             st.markdown(f"<div style='background:#e0c3fc;padding:0.7em 1em;border-radius:0.8em;margin-bottom:0.2em;'><b>You:</b> {msg}</div>", unsafe_allow_html=True)
         else:
             st.markdown(f"<div style='background:#f8f9fa;padding:0.7em 1em;border-radius:0.8em;margin-bottom:1em;'><b>Agent:</b> {msg}</div>", unsafe_allow_html=True)
+# STRESS RELIEVER SONG & DOWNLOAD SECTION
 
+st.markdown("""
+---
 ### 🎵 Stress Reliever Song
-Listen to "Weightless" by Marconi Union, a scientifically recognized stress-relief track:
+Listen to "Everdream" by Soul Factory, a scientifically recognized stress-relief track:
 
-<iframe width="100%" height="120" src="https://www.youtube.com/embed/UfcAVejslrU?si=J1AP15Blg4jtAw6L" title="Weightless by Marconi Union" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="100%" height="120" src="https://www.youtube.com/embed/RCMXO9sBIcU?si=J1Ml5zfnapoGjgjc" title="Everdream by Soul Factory" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 """, unsafe_allow_html=True)
 
 st.markdown("""
@@ -483,10 +502,9 @@ txt_data = get_full_session_text()
 st.download_button(
     label="Download as TXT",
     data=txt_data,
-    file_name="mental_wellbeing_session.txt",
+    file_name="music_therapy_session.txt",
     mime="text/plain"
 )
-
 # HELPLINE SECTION
 st.markdown("""
 <div style="background: #06b1c4; border-radius: 1em; padding: 1em; margin-top: 2em;">
@@ -494,8 +512,9 @@ st.markdown("""
 This application is a supportive tool and does not replace professional mental health care.<br>
 If you're experiencing thoughts of self-harm or severe crisis:<br>
 <ul>
-<li>Call National Crisis Hotline: <b>988</b></li>
-<li>Call Emergency Services: <b>911</b></li>
+<li> National Institute of Mental Health and Neurosciences (NIMHANS) helpline: <b>080-46110007</b></li>
+<li> Mental Health Rehabilitation Helpline "KIRAN”: <b>1800-500-0019</b></li>
+<li> Call Emergency Services: <b>112</b></li>
 <li>Seek immediate professional help</li>
 </ul>
 </div>
