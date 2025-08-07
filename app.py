@@ -478,19 +478,11 @@ elif agent_mode == "Listener (Vent & Comfort)":
             st.warning("Please write something to share.")
 
     # Display conversation
-    agent_bg = "#f8f9fa" if mode == "Light" else "#262730"
-agent_color = "#222" if mode == "Light" else "#fff"
-for speaker, msg in st.session_state.vent_history:
-    if speaker == "user":
-        st.markdown(
-            f"<div style='background:#e0c3fc;padding:0.7em 1em;border-radius:0.8em;margin-bottom:0.2em;'><b>You:</b> {msg}</div>",
-            unsafe_allow_html=True
-        )
-    else:
-        st.markdown(
-            f"<div style='background:{agent_bg};color:{agent_color};padding:0.7em 1em;border-radius:0.8em;margin-bottom:1em;'><b>Agent:</b> {msg}</div>",
-            unsafe_allow_html=True
-        )
+    for speaker, msg in st.session_state.vent_history:
+        if speaker == "user":
+            st.markdown(f"<div style='background:#e0c3fc;padding:0.7em 1em;border-radius:0.8em;margin-bottom:0.2em;'><b>You:</b> {msg}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<div style='background:#f8f9fa;padding:0.7em 1em;border-radius:0.8em;margin-bottom:1em;'><b>Agent:</b> {msg}</div>", unsafe_allow_html=True)
 
 st.markdown("""
 ---
