@@ -478,11 +478,20 @@ elif agent_mode == "Listener (Vent & Comfort)":
             st.warning("Please write something to share.")
 
     # Display conversation
-    for speaker, msg in st.session_state.vent_history:
-        if speaker == "user":
-            st.markdown(f"<div style='background:#e0c3fc;padding:0.7em 1em;border-radius:0.8em;margin-bottom:0.2em;'><b>You:</b> {msg}</div>", unsafe_allow_html=True)
-        else:
-            st.markdown(f"<div style='background:#f8f9fa;padding:0.7em 1em;border-radius:0.8em;margin-bottom:1em;'><b>Agent:</b> {msg}</div>", unsafe_allow_html=True)
+    # Define agent box colors based on mode
+agent_box_bg = "#f8f9fa" if mode == "Light" else "#262730"
+agent_box_color = "#222" if mode == "Light" else "#fff"
+
+# Build HTML for all messages
+messages_html = "".join(
+    f"<div style='background:#e0c3fc;padding:0.7em 1em;border-radius:0.8em;margin-bottom:0.2em;'><b>You:</b> {msg}</div>" if speaker == "user"
+    else f"<div style='background:{agent_box_bg};color:{agent_box_color};padding:0.7em 1em;border-radius:0.8em;margin-bottom:1em;'><b>Agent:</b> {msg}</div>"
+    for speaker, msg in st.session_state.vent_history
+)
+
+# Display all messages at once
+st.markdown(messages_html, unsafe_allow_html=True)
+
 # STRESS RELIEVER SONG & DOWNLOAD SECTION
 
 st.markdown("""
