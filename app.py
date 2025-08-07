@@ -483,6 +483,7 @@ elif agent_mode == "Listener (Vent & Comfort)":
             st.markdown(f"<div style='background:#e0c3fc;padding:0.7em 1em;border-radius:0.8em;margin-bottom:0.2em;'><b>You:</b> {msg}</div>", unsafe_allow_html=True)
         else:
             st.markdown(f"<div style='background:#f8f9fa;padding:0.7em 1em;border-radius:0.8em;margin-bottom:1em;'><b>Agent:</b> {msg}</div>", unsafe_allow_html=True)
+# STRESS RELIEVER SONG & DOWNLOAD SECTION
 
 st.markdown("""
 ---
